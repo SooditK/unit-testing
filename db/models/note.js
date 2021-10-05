@@ -1,17 +1,16 @@
-const mongoose = require('mongoose');
 
-const NoteSchema = new mongoose.Schema({
+const {DataTypes} = require('sequelize');
+const sequelize = require("..")
+
+module.exports = sequelize.define("note", {
+  // product id
   name: {
-    type: String,
-    required: true,
-    unique: true,
+    type: DataTypes.STRING,
+    allowNull: false,
+    primaryKey: true
   },
   text: {
-    type: String,
-    required: true,
-  },
-});
-
-const Note = mongoose.model('Note', NoteSchema)
-
-module.exports = { Note };
+    type: DataTypes.STRING,
+    allowNull: false
+  }
+})
